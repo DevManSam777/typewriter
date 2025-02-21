@@ -1,3 +1,6 @@
+// Array of phrases to display in the typewriter effect
+const phrases = ["Hello World!", "Enjoy the typewriter effect.", "Take care."];
+
 // Get the HTML element where the text will be displayed
 const textDisplay = document.getElementById("text");
 // Array to store the current phrase being typed/deleted
@@ -11,10 +14,7 @@ let isDeleting = false;
 // Boolean to track if we've reached the end of a phrase
 let isEnd = false;
 
-// Array of phrases to display in the typewriter effect
-const phrases = ["Hello World!", "Enjoy the typewriter effect.", "Take care."];
-
-function loop() {
+function loopThroughPhrases() {
   isEnd = false;
 
   if (i < phrases.length) {
@@ -59,7 +59,7 @@ function loop() {
   // Random speed between 0-150ms when deleting (faster)
   const spedUp = Math.random() * 150;
   // Random speed between 0-400ms when typing (slower)
-  const normalSpeed = Math.random() * 400;
+  const normalSpeed = Math.random() * 600;
   // Determine the delay before the next character:
   // 2000ms pause at the end of a phrase
   // spedUp speed when deleting
@@ -67,8 +67,8 @@ function loop() {
   const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed;
 
   // Schedule the next iteration of the loop
-  setTimeout(loop, time);
+  setTimeout(loopThroughPhrases, time);
 }
 
 // Start the typewriter effect
-loop();
+loopThroughPhrases();
