@@ -14,20 +14,37 @@ function loop() {
 
     if (i < phrases.length) {
         if (!isDeleting && j <= phrases[i].length) {
-            currentPhrase.push(phrases[i][j]);
+            currentPhrase.push(phrases[i][j]) 
             j++;
             console.log(currentPhrase);
-            
-        } 
+            textDisplay.innerHTML = currentPhrase.join("") + "|";;
+        }  
+        
+        if (isDeleting && j <= phrases[i].length) {
+            currentPhrase.pop();
+            j--;
+            textDisplay.innerHTML = currentPhrase.join("") + "|";
+        }
+        
+        if (j == phrases[i].length) {
+            isDeleting = true;
+        }
+
+        if (isDeleting && j === 0) {
+            currentPhrase = [];
+            isDeleting = false;
+            i++;
+
+            if( i === phrases.length) {
+                i = 0;
+            } 
+        }
     }
 
-    if (j == phrases[i].length) {
-        i++;
-        j = 0;
-    }
+  
    
-    const time = 2000;
+    const time = 100;
     setTimeout(loop, time) 
 }
 
-// loop();
+loop();
