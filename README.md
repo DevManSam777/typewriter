@@ -19,11 +19,6 @@ The webpage displays a heading with a typewriter effect. The text animates chara
 
 ## Project Structure
 
-Typewriter/
-├── index.html
-├── styles.css
-└── script.js
-
 - `index.html`: The main HTML file containing the structure of the webpage.
 - `styles.css`: The CSS file containing the styling rules for the page.
 - `script.js`: The JavaScript file containing the logic for the typewriter effect.
