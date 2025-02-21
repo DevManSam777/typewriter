@@ -11,11 +11,21 @@ body {
     display: grid;
     place-content: center;
     height: 100vh;
+    color: white;
 }
 
 h1 {
     font-family: 'Special Elite', serif;
-    color: white;
     font-size: 3rem;
     letter-spacing: .8rem;   
+}
+
+.cursor {
+    font-weight: bold;
+    animation: blinkCursor 1s infinite;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
