@@ -1,5 +1,9 @@
 // Array of phrases to display in the typewriter effect
-const phrases = ["Hello World!", "Enjoy the typewriter effect.", "Take care."];
+const phrases = [
+  "Hello World!",
+  "Enjoy the typewriter effect.",
+  "Take care."
+];
 
 // Get the HTML elements
 const textDisplay = document.getElementById("text");
@@ -73,7 +77,7 @@ function loopThroughPhrases() {
 
   // Timing control
   const spedUp = Math.random() * 150;
-  const normalSpeed = Math.random() * 600;
+  const normalSpeed = Math.random() * 300;
   const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed;
 
   setTimeout(loopThroughPhrases, time);
