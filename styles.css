@@ -21,6 +21,7 @@ h1 {
   font-size: 3rem;
   letter-spacing: 0.1em;
   word-wrap: break-word;
+  line-height: 1.2;
 }
 
 .cursor {

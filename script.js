@@ -1,8 +1,14 @@
 // Array of phrases to display in the typewriter effect
+// const breakTag = "<br/>"
+
+//Place the text you want displayed in the DOM inside of a string in the phrases array, and delete or comment out what you don't need.
+
 const phrases = [
   "Hello World!",
   "Enjoy the typewriter effect.",
-  "Take care."
+  "Take care.",
+//   `Hi Friends, ${breakTag}${breakTag}
+//  I refined the typewriter effect for enhanced realism. Implemented randomized typing speed, precise cursor positioning adjacent to the last character, and a fixed-width print area to simulate authentic, left-to-right typing on a static page.`,
 ];
 
 // Get the HTML elements
@@ -76,8 +82,8 @@ function loopThroughPhrases() {
   }
 
   // Timing control
-  const spedUp = Math.random() * 150;
-  const normalSpeed = Math.random() * 300;
+  const spedUp = Math.random() * 150; //the lower the number the faster it erases
+  const normalSpeed = Math.random() * 300; //the lower the value the faster it types
   const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed;
 
   setTimeout(loopThroughPhrases, time);
