@@ -84,7 +84,7 @@ function loopThroughPhrases() {
   // Timing control
   const spedUp = Math.random() * 150; //the lower the number the faster it erases
   const normalSpeed = Math.random() * 300; //the lower the value the faster it types
-  const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed;
+  const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed; // initial numeric value in ms will dictate the pause at the end of each phrase (when isEnd === true).  2000 would be equivalent to 2 seconds
 
   setTimeout(loopThroughPhrases, time);
 }
