@@ -1,74 +1,88 @@
 // Array of phrases to display in the typewriter effect
 const phrases = ["Hello World!", "Enjoy the typewriter effect.", "Take care."];
 
-// Get the HTML element where the text will be displayed
+// Get the HTML elements
 const textDisplay = document.getElementById("text");
-// Array to store the current phrase being typed/deleted
+const cursor = document.querySelector(".cursor");
+
+// State variables
 let currentPhrase = [];
-// Index to track which phrase we're on in the phrases array
 let i = 0;
-// Index to track which character we're on in the current phrase
 let j = 0;
-// Boolean to determine if we're currently deleting characters
 let isDeleting = false;
-// Boolean to track if we've reached the end of a phrase
 let isEnd = false;
+let cursorVisible = true;
+
+// Cursor animation
+function animateCursor() {
+  // Toggle cursor visibility
+  cursorVisible = !cursorVisible;
+
+  // Add/remove opacity based on visibility state
+  if (cursorVisible) {
+    cursor.style.opacity = "1";
+  } else {
+    cursor.style.opacity = "0";
+  }
+}
+
+// Set up cursor animation interval
+const cursorInterval = setInterval(animateCursor, 400);
+
+// Add transition for smooth cursor animation
+cursor.style.transition = "all 0.15s ease";
 
 function loopThroughPhrases() {
   isEnd = false;
 
   if (i < phrases.length) {
-    // TYPING EFFECT: If we're not deleting and haven't reached the end of the phrase
+    // TYPING EFFECT
     if (!isDeleting && j <= phrases[i].length) {
-      // Add the next character to currentPhrase array
       currentPhrase.push(phrases[i][j]);
       j++;
-      // Display the current state of the phrase
       textDisplay.innerHTML = currentPhrase.join("");
+
+      // Make cursor visible and add active class during typing
+      cursor.style.opacity = "1";
     }
 
-    // DELETING EFFECT: If we are deleting and haven't removed all characters
+    // DELETING EFFECT
     if (isDeleting && j <= phrases[i].length) {
-      // Remove the last character from currentPhrase array
       currentPhrase.pop();
       j--;
-      // Display the current state of the phrase
       textDisplay.innerHTML = currentPhrase.join("");
     }
 
-    // If we've reached the end of the current phrase
+    // End of phrase reached
     if (j == phrases[i].length) {
       isEnd = true;
-      isDeleting = true; // Start deleting
+      isDeleting = true;
     }
 
-    // If we've deleted all characters
+    // All characters deleted
     if (isDeleting && j === 0) {
-      currentPhrase = []; // Reset the current phrase array
-      isDeleting = false; // Stop deleting
-      i++; // Move to next phrase
+      currentPhrase = [];
+      isDeleting = false;
+      i++;
 
-      // If we've gone through all phrases, start over
       if (i === phrases.length) {
         i = 0;
       }
     }
   }
 
-  // TIMING CONTROL
-  // Random speed between 0-150ms when deleting (faster)
+  // Timing control
   const spedUp = Math.random() * 150;
-  // Random speed between 0-400ms when typing (slower)
   const normalSpeed = Math.random() * 600;
-  // Determine the delay before the next character:
-  // 2000ms pause at the end of a phrase
-  // spedUp speed when deleting
-  // normalSpeed when typing
   const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed;
 
-  // Schedule the next iteration of the loop
   setTimeout(loopThroughPhrases, time);
 }
 
 // Start the typewriter effect
 loopThroughPhrases();
+
+// Clean up interval when page is unloaded
+window.addEventListener("unload", () => {
+  clearInterval(cursorInterval);
+});

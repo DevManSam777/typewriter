@@ -1,31 +1,28 @@
 html {
-    margin: 0;
-    padding: 0;
-    font-size: 62.5%;
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    display: grid;
-    place-content: center;
-    height: 100vh;
-    color: white;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  color: white;
 }
 
 h1 {
-    font-family: 'Special Elite', serif;
-    font-size: 3rem;
-    letter-spacing: .8rem;   
+  font-family: "Special Elite", serif;
+  font-size: 9rem;
+  letter-spacing: 0.8rem;
 }
 
 .cursor {
+    position: relative;
     font-weight: bold;
-    animation: blinkCursor 1s infinite;
-}
-
-@keyframes blinkCursor {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
+    opacity: 1;
+    left: -.1em; 
+}  
