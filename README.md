@@ -1,5 +1,6 @@
 # Typewriter Effect
-
+![Typewriter effect](./typewriter.gif)  
+  
 This project implements a typewriter effect using HTML, CSS, and JavaScript. It displays a series of phrases with a classic typewriter animation, including a blinking cursor.
 
 ## Description
